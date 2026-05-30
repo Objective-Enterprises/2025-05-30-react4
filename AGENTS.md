@@ -44,6 +44,17 @@ src/
   - `.addCase(thunk.fulfilled, (state, action) => {})`: set loading false, update state with `action.payload`
   - `.addCase(thunk.rejected, (state, action) => {})`: set loading false, set `state.error`
 - Thunks call service functions, not axios directly.
+- Always select the most narrow data needed to minimize re-renders:
+
+```jsx
+// BAD - selecting entire user object when only name is needed
+const user = useSelector((state) => state.auth.user);
+return <div>{user?.name}</div>;
+
+// GOOD - selecting only the name to minimize re-renders
+const name = useSelector((state) => state.auth.user?.name);
+return <div>{name}</div>;
+```
 
 ### Components
 
