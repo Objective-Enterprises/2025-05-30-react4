@@ -51,6 +51,12 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    clearAuthState: (state) => {
+      state.login.error = null
+      state.login.status = 'idle'
+      state.registration.error = null
+      state.registration.status = 'idle'
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -81,3 +87,4 @@ const authSlice = createSlice({
   }
 })
 export default authSlice.reducer;
+export const clearAuthState = authSlice.actions.clearAuthState;
