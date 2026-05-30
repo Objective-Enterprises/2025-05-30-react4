@@ -57,11 +57,28 @@ export function saveUser (user) {
   }
 }
 
+export function logoutUser() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  return function (dispatch) {
+    const action = authSlice.actions.logout()
+    dispatch(action)
+  }
+}
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     clearAuthState: (state) => {
+      state.login.error = null
+      state.login.status = 'idle'
+      state.registration.error = null
+      state.registration.status = 'idle'
+    },
+    logout: (state) => {
+      state.token = null
+      state.user = null
       state.login.error = null
       state.login.status = 'idle'
       state.registration.error = null
