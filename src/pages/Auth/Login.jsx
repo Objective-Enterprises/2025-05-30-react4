@@ -11,7 +11,9 @@ function Login() {
   const dispatch = useDispatch();
   const hasNavigated = useRef(false);
 
-  const { token, loading, error } = useSelector((state) => state.auth);
+  const token = useSelector((state) => state.auth.token);
+  const loading = useSelector((state) => state.auth.login.status === 'pending');
+  const error = useSelector((state) => state.auth.login.error);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
