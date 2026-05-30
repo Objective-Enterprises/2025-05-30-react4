@@ -30,7 +30,7 @@ export default function ThreadCard({ thread, goBack }) {
             size="sm"
             className="back-to-home-btn text-decoration-none"
           >
-            <i className="bi bi-arrow-left me-2"></i>Back to Home
+            <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>Back to Home
           </Button>
         )}
 
@@ -53,7 +53,7 @@ export default function ThreadCard({ thread, goBack }) {
 
             <div className="d-flex gap-4 flex-wrap thread-meta">
               <div className="d-flex align-items-center gap-2">
-                <i className="bi bi-person-circle thread-meta-icon"></i>
+                <i className="bi bi-person-circle thread-meta-icon" aria-hidden="true"></i>
                 <span>
                   <strong className="thread-meta-author">
                     {thread.author?.name ?? "Unknown"}
@@ -61,7 +61,7 @@ export default function ThreadCard({ thread, goBack }) {
                 </span>
               </div>
               <div className="d-flex align-items-center gap-2">
-                <i className="bi bi-bookmark thread-meta-icon"></i>
+                <i className="bi bi-bookmark thread-meta-icon" aria-hidden="true"></i>
                 <span className="badge thread-meta-badge">
                   r/{thread.subreddit?.name ?? "unknown"}
                 </span>

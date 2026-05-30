@@ -71,7 +71,11 @@ function Login() {
             </label>
           </Form.Floating>
 
-          {error && <div className="auth-error">{error}</div>}
+          {error && (
+            <div className="auth-error" role="alert" aria-live="assertive">
+              {error}
+            </div>
+          )}
 
           <Button
             type="submit"
@@ -80,10 +84,12 @@ function Login() {
             disabled={loading}
           >
             {loading ? (
-              <Spinner as="span" animation="border" size="sm" role="status" />
+              <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true">
+                <span className="visually-hidden">Logging in...</span>
+              </Spinner>
             ) : (
               <>
-                <i className="bi bi-box-arrow-in-right me-2"></i>Login
+                <i className="bi bi-box-arrow-in-right me-2" aria-hidden="true"></i>Login
               </>
             )}
           </Button>

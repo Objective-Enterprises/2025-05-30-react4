@@ -79,7 +79,11 @@ function Register() {
             <label htmlFor="floatingPassword" className="auth-form-label">Password</label>
           </Form.Floating>
 
-          {error && <div className="auth-error">{error}</div>}
+          {error && (
+            <div className="auth-error" role="alert" aria-live="assertive">
+              {error}
+            </div>
+          )}
 
           <Button
             type="submit"
@@ -88,10 +92,12 @@ function Register() {
             disabled={loading}
           >
             {loading ? (
-              <Spinner animation="border" size="sm" role="status" />
+              <Spinner animation="border" size="sm" role="status" aria-hidden="true">
+                <span className="visually-hidden">Registering...</span>
+              </Spinner>
             ) : (
               <>
-                <i className="bi bi-person-plus-fill me-2"></i>Register
+                <i className="bi bi-person-plus-fill me-2" aria-hidden="true"></i>Register
               </>
             )}
           </Button>

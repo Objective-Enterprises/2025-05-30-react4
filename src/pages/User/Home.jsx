@@ -106,6 +106,8 @@ export default function Home() {
                   variant={showForm ? "secondary" : "primary"}
                   size="sm"
                   onClick={() => setShowForm((prev) => !prev)}
+                  aria-expanded={showForm}
+                  aria-controls="create-thread-form"
                   style={{
                     backgroundColor: showForm
                       ? undefined
@@ -114,7 +116,11 @@ export default function Home() {
                     fontWeight: "600",
                   }}
                 >
-                  {showForm ? "✕ Close" : "➕ Create"}
+                  {showForm ? (
+                    <><span aria-hidden="true">✕</span>{" "}Close</>
+                  ) : (
+                    <><span aria-hidden="true">➕</span>{" "}Create</>
+                  )}
                 </Button>
               </Col>
             </Row>
@@ -125,6 +131,7 @@ export default function Home() {
             {/* Create Thread Form */}
             {showForm && (
               <Card
+                id="create-thread-form"
                 className="mb-3 shadow-sm border-0 rounded-3"
                 style={{ backgroundColor: "var(--bg-light)" }}
               >
@@ -136,11 +143,11 @@ export default function Home() {
 
             {/* Thread states */}
             {isLoading ? (
-              <Card.Text className="text-muted text-center py-4">
+              <Card.Text className="text-muted text-center py-4" role="status" aria-live="polite">
                 Loading threads...
               </Card.Text>
             ) : error ? (
-              <Card.Text className="text-danger text-center py-4">
+              <Card.Text className="text-danger text-center py-4" role="alert" aria-live="assertive">
                 Error: {error}
               </Card.Text>
             ) : displayThreads && displayThreads.length > 0 ? (

@@ -105,7 +105,9 @@ export default function Thread() {
       {/* Comments Section */}
       <section className="mb-5">
         <div className="d-flex align-items-center justify-content-between mb-4 px-2">
-          <h4 className="comments-header-title">💬 Comments</h4>
+          <h4 className="comments-header-title">
+            <span aria-hidden="true">💬</span>{" "}Comments
+          </h4>
           <span className="comments-count">{threadComments.length} total</span>
         </div>
 
@@ -118,7 +120,9 @@ export default function Thread() {
         {commentsLoading ? (
           <Card className="text-center py-4">
             <Card.Body>
-              <Spinner animation="border" role="status" size="sm" />
+              <Spinner animation="border" role="status" size="sm" aria-hidden="true">
+                <span className="visually-hidden">Loading comments...</span>
+              </Spinner>
               <p className="text-muted mt-2 mb-0">Loading comments...</p>
             </Card.Body>
           </Card>

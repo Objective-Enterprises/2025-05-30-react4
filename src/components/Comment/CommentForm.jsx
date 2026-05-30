@@ -15,6 +15,7 @@ export default function CommentForm({ commentText, onCommentChange, onPostCommen
         <h5 className="add-comment-title">Add a Comment</h5>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="commentTextarea" className="mb-3">
+            <Form.Label className="visually-hidden">Your comment</Form.Label>
             <Form.Control
               as="textarea"
               rows={4}
@@ -31,7 +32,7 @@ export default function CommentForm({ commentText, onCommentChange, onPostCommen
             disabled={disabled || !commentText?.trim()}
             className="post-comment-btn"
           >
-            📝 Post Comment
+            <span aria-hidden="true">📝</span>{" "}Post Comment
           </Button>
         </Form>
       </Card.Body>

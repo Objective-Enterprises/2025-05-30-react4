@@ -20,9 +20,9 @@ export default function ThreadList({ threadsToDisplay }) {
   };
 
   return (
-    <Container fluid className="px-0">
+    <Container fluid className="px-0" role="list">
       {threadsToDisplay.map((thread) => (
-        <div key={thread._id} className="thread-card">
+        <div key={thread._id} className="thread-card" role="listitem">
           <div className="thread-card-body">
             {/* Voting Section */}
             <div className="vote-section">
@@ -30,6 +30,7 @@ export default function ThreadList({ threadsToDisplay }) {
                 count={thread.voteCount}
                 onUpvote={() => handleUpvote(thread._id)}
                 onDownvote={() => handleDownvote(thread._id)}
+                ariaLabel={`thread: ${thread.title}`}
               />
             </div>
 
@@ -43,7 +44,7 @@ export default function ThreadList({ threadsToDisplay }) {
               </div>
               <p className="thread-text">{thread.content}</p>
               <Link to={`/thread/${thread._id}`} className="view-thread-btn">
-                💬 View Comments
+                <span aria-hidden="true">💬</span>{" "}View Comments
               </Link>
             </div>
           </div>

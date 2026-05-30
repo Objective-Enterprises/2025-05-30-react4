@@ -20,9 +20,13 @@ function Sidebar({ isOpen, onClose }) {
       <div 
         className={`sidebar-overlay ${isOpen ? 'show' : ''}`}
         onClick={onClose}
+        aria-hidden="true"
       />
-      <aside className={`sidebar ${!isOpen ? 'mobile-hidden' : ''}`}>
-        <Nav className="flex-column">
+      <aside
+        className={`sidebar ${!isOpen ? 'mobile-hidden' : ''}`}
+        aria-label="Main navigation"
+      >
+        <Nav className="flex-column" as="nav" aria-label="Site menu">
           {/* Menu Section */}
           <div className="mb-4">
             <h6 className="text-uppercase fw-bold small mb-2 px-3" style={{ color: 'var(--text-muted)' }}>Menu</h6>
@@ -32,16 +36,18 @@ function Sidebar({ isOpen, onClose }) {
                 active={isActive("/home")}
                 onClick={() => handleNavigation("/home")}
                 className="border-0 rounded mx-2"
+                aria-current={isActive("/home") ? "page" : undefined}
               >
-                🏠 Home
+                <span aria-hidden="true">🏠</span>{" "}Home
               </ListGroup.Item>
               <ListGroup.Item 
                 action
                 active={isActive("/profile")}
                 onClick={() => handleNavigation("/profile")}
                 className="border-0 rounded mx-2"
+                aria-current={isActive("/profile") ? "page" : undefined}
               >
-                👤 Profile
+                <span aria-hidden="true">👤</span>{" "}Profile
               </ListGroup.Item>
             </ListGroup>
           </div>

@@ -50,7 +50,14 @@ function Header({ onToggleSidebar }) {
               ☰
             </button>
           )}
-          <h1 className="header-logo" onClick={() => navigate("/home")}>
+          <h1
+            className="header-logo"
+            onClick={() => navigate("/home")}
+            tabIndex={0}
+            role="link"
+            aria-label="ThreadHive – Go to home"
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate('/home')}
+          >
             ThreadHive
           </h1>
         </div>

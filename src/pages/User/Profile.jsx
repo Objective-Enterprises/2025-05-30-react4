@@ -42,7 +42,7 @@ function Profile() {
       <Card className="profile-card border-0 shadow-sm">
         <Card.Body className="profile-header">
           <div className="profile-avatar-section">
-            <div className="profile-avatar">
+            <div className="profile-avatar" aria-hidden="true">
               {form.name?.charAt(0).toUpperCase() ?? "U"}
             </div>
           </div>
@@ -123,10 +123,11 @@ function Profile() {
               <Form>
                 <Row>
                   <Col md={6} className="mb-3">
-                    <Form.Label className="profile-field-label">
+                    <Form.Label htmlFor="profile-name" className="profile-field-label">
                       Full Name
                     </Form.Label>
                     <Form.Control
+                      id="profile-name"
                       className="profile-form-control"
                       name="name"
                       value={form.name}
@@ -134,10 +135,11 @@ function Profile() {
                     />
                   </Col>
                   <Col md={6} className="mb-3">
-                    <Form.Label className="profile-field-label">
+                    <Form.Label htmlFor="profile-email" className="profile-field-label">
                       Email Address
                     </Form.Label>
                     <Form.Control
+                      id="profile-email"
                       className="profile-form-control"
                       name="email"
                       value={form.email}
@@ -146,8 +148,9 @@ function Profile() {
                     />
                   </Col>
                   <Col md={12} className="mb-3">
-                    <Form.Label className="profile-field-label">Bio</Form.Label>
+                    <Form.Label htmlFor="profile-bio" className="profile-field-label">Bio</Form.Label>
                     <Form.Control
+                      id="profile-bio"
                       className="profile-form-control"
                       as="textarea"
                       rows={3}
@@ -158,10 +161,11 @@ function Profile() {
                     />
                   </Col>
                   <Col md={6} className="mb-3">
-                    <Form.Label className="profile-field-label">
+                    <Form.Label htmlFor="profile-location" className="profile-field-label">
                       Location
                     </Form.Label>
                     <Form.Control
+                      id="profile-location"
                       className="profile-form-control"
                       name="location"
                       value={form.location}
@@ -170,10 +174,11 @@ function Profile() {
                     />
                   </Col>
                   <Col md={6} className="mb-3">
-                    <Form.Label className="profile-field-label">
+                    <Form.Label htmlFor="profile-website" className="profile-field-label">
                       Website
                     </Form.Label>
                     <Form.Control
+                      id="profile-website"
                       className="profile-form-control"
                       name="website"
                       value={form.website}
